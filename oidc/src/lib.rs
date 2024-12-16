@@ -1,3 +1,11 @@
+use std::cmp::Reverse;
+
+enum ResponseType {
+    Code,
+    IdToken,
+    Token,
+}
+
 enum Display {
     Page,
     Popup,
@@ -15,7 +23,7 @@ enum Prompt {
 struct AuthentificationRequest {
     scope: Vec<String>,
     client_id: String,
-    reponse_type: Vec<String>,
+    reponse_type: Vec<ResponseType>,
     redirect_uri: String,
     state: Option<String>,
     response_mode: Option<String>,
