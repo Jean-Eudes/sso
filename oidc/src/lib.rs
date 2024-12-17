@@ -20,10 +20,10 @@ enum Prompt {
     SelectAccount,
 }
 
-struct AuthentificationRequest {
+struct AuthenticationRequest {
     scope: Vec<String>,
     client_id: String,
-    reponse_type: Vec<ResponseType>,
+    response_type: Vec<ResponseType>,
     redirect_uri: String,
     state: Option<String>,
     response_mode: Option<String>,
@@ -35,6 +35,25 @@ struct AuthentificationRequest {
     id_token_hint: Option<String>,
     login_hint: Option<String>,
     acr_values: Vec<String>,
+}
+
+enum ErrorCode {
+    InteractionRequired,
+    LoginRequired,
+    AccountSelectionRequired,
+    ConsentRequired,
+    InvalidRequestUri,
+    InvalidRequestObject,
+    RequestNotSupported,
+    RequestUriNotSupported,
+    RegistrationNotSupported,
+
+}
+struct AuthenticationErrorResponse {
+    error: ErrorCode,
+    error_description: Option<String>,
+    error_uri: Option<String>,
+    state: Option<String>,
 }
 
 pub fn add(left: u64, right: u64) -> u64 {
