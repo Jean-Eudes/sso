@@ -1,5 +1,3 @@
-use std::cmp::Reverse;
-
 enum ResponseType {
     Code,
     IdToken,
@@ -54,6 +52,34 @@ struct AuthenticationErrorResponse {
     error_description: Option<String>,
     error_uri: Option<String>,
     state: Option<String>,
+}
+
+struct Client {
+    client_id: String,
+    client_secret: String,
+    redirect_uri: String,
+    client_type: ClientType,
+}
+
+enum ClientType {
+    Public,
+    Confidential,
+}
+
+struct TokenRequest {
+    grant_type: String,
+    client_id: Option<String>,
+    redirect_uri: Option<String>, // use for compatibility with oauth 2.0, remove in 2.1
+
+}
+
+struct TokenResponse {
+    access_token: String,
+    token_type: String,
+    expires_in: u64,
+    refresh_token: String,
+    scope: Vec<String>,
+    id_token: Option<String>,
 }
 
 pub fn add(left: u64, right: u64) -> u64 {
