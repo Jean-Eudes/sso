@@ -66,11 +66,17 @@ enum ClientType {
     Confidential,
 }
 
-struct TokenRequest {
+pub struct TokenRequest {
     grant_type: String,
     client_id: Option<String>,
     redirect_uri: Option<String>, // use for compatibility with oauth 2.0, remove in 2.1
 
+}
+
+impl TokenRequest {
+    pub fn new(grant_type: String, client_id: Option<String>, redirect_uri: Option<String>) -> Self {
+        TokenRequest{grant_type, client_id, redirect_uri}
+    }
 }
 
 struct TokenResponse {

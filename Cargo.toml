@@ -1,12 +1,11 @@
-[package]
-name = "sso"
-version = "0.1.0"
+[workspace.package]
 edition = "2021"
-
 
 [workspace]
 members = [
-    "oidc",
+    "oidc", "server",
 ]
 
-[dependencies]
+[workspace.dependencies]
+axum = "0.7.9"
+oidc = {path = "oidc"}
